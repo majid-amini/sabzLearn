@@ -129,7 +129,7 @@ export default function Navbar() {
             </a>
             <a className="main-header__profile">
               <span className="main-header__profile-text">
-                محمدامین سعیدی راد
+                حامد اکبری و مجید امینی
               </span>
             </a>
           </div>
