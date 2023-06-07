@@ -10,7 +10,7 @@ export default function LastCourses() {
           <SectionHeader
             title={"جدیدترین دوره ها"}
             desc={"سکوی پرتاب شما به سمت موفقیت"}
-            btnTitle={"تمامی دوره ها س"}
+            btnTitle={"تمامی دوره ها "}
           />
         </div>
       </div>
