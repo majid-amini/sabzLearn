@@ -1,5 +1,5 @@
 import Index from "./Pages/Index";
-import CourseInfo from "./Pages/CourseInfo";
+import CourseInfo from "./Pages//CourseInfo/CourseInfo";
 import Category from "./Pages/Category/Category";
 import ArticleInfo from "./Pages/ArticleInfo";
 
