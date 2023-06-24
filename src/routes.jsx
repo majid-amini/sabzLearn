@@ -1,6 +1,6 @@
 import Index from "./Pages/Index";
 import CourseInfo from "./Pages/CourseInfo";
-import Category from "./Pages/Category";
+import Category from "./Pages/Category/Category";
 import ArticleInfo from "./Pages/ArticleInfo";
 
 const routes = [
