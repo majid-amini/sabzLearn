@@ -6,6 +6,8 @@ import Breadcrumb from "../../Components/BreadCrumb/BreadCrumb";
 
 import "./CourseInfo.css";
 import CourseDetailBox from "../../Components/CourseDetailBox/CourseDetailBox";
+import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
+import Accardion from "react-bootstrap/Accordion";
 
 export default function CourseInfo() {
   return (
@@ -87,6 +89,7 @@ export default function CourseInfo() {
                       icon="clock"
                       title=" مدت زمان دوره:"
                       text="19 ساعت"
+                      o
                     />
                     <CourseDetailBox
                       icon="calendar-alt"
@@ -110,6 +113,7 @@ export default function CourseInfo() {
                     />
                   </div>
                 </div>
+
                 <div class="course-progress">
                   <div class="course-progress__header">
                     <i class="fas fa-chart-line course-progress__icon"></i>
@@ -129,6 +133,7 @@ export default function CourseInfo() {
                     ></div>
                   </div>
                 </div>
+
                 <div class="introduction">
                   <div class="introduction__item">
                     <span class="introduction__title title">
@@ -207,124 +212,217 @@ export default function CourseInfo() {
                   </div>
 
                   <div class="introduction__topic">
-                    <div class="accordion" id="accordionExample">
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                          <button
-                            class="accordion-button"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne"
-                            aria-expanded="true"
-                            aria-controls="collapseOne"
-                          >
-                            معرفی دوره
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseOne"
-                          class="accordion-collapse collapse show"
-                          aria-labelledby="headingOne"
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div class="accordion-body introduction__accordion-body">
-                            <div class="introduction__accordion-right">
-                              <span class="introduction__accordion-count">
-                                1
-                              </span>
-                              <i class="fab fa-youtube introduction__accordion-icon"></i>
-                              <a href="#" class="introduction__accordion-link">
-                                معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
-                              </a>
-                            </div>
-                            <div class="introduction__accordion-left">
-                              <span class="introduction__accordion-time">
-                                18:34
-                              </span>
-                            </div>
+                    <Accardion defaultActiveKey="0">
+                      <Accardion.Item eventKey="0" className="accordion">
+                        <Accardion.Header>معرفی دوره</Accardion.Header>
+                        <Accardion.Body className="introduction__accordion-body">
+                          <div class="introduction__accordion-right">
+                            <span class="introduction__accordion-count">1</span>
+                            <i class="fab fa-youtube introduction__accordion-icon"></i>
+                            <a href="#" class="introduction__accordion-link">
+                              معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
+                            </a>
                           </div>
-                        </div>
+                          <div class="introduction__accordion-left">
+                            <span class="introduction__accordion-time">
+                              18:34
+                            </span>
+                          </div>
+                        </Accardion.Body>
+                      </Accardion.Item>
+
+                      <Accardion.Item eventKey="1" className="accordion">
+                        <Accardion.Header>
+                          اصطلاحات مقدماتی مربوط به بک اند
+                        </Accardion.Header>
+                        <Accardion.Body className="introduction__accordion-body">
+                          <div class="introduction__accordion-right">
+                            <span class="introduction__accordion-count">1</span>
+                            <i class="fab fa-youtube introduction__accordion-icon"></i>
+                            <a href="#" class="introduction__accordion-link">
+                              معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
+                            </a>
+                          </div>
+                          <div class="introduction__accordion-left">
+                            <span class="introduction__accordion-time">
+                              18:34
+                            </span>
+                          </div>
+                        </Accardion.Body>
+                        <Accardion.Body className="introduction__accordion-body">
+                          <div class="introduction__accordion-right">
+                            <span class="introduction__accordion-count">2</span>
+                            <i class="fab fa-youtube introduction__accordion-icon"></i>
+                            <a href="#" class="introduction__accordion-link">
+                              جلسه دوم این فصل
+                            </a>
+                          </div>
+                          <div class="introduction__accordion-left">
+                            <span class="introduction__accordion-time">
+                              18:34
+                            </span>
+                          </div>
+                        </Accardion.Body>
+                        <Accardion.Body className="introduction__accordion-body">
+                          <div class="introduction__accordion-right">
+                            <span class="introduction__accordion-count">3</span>
+                            <i class="fab fa-youtube introduction__accordion-icon"></i>
+                            <a href="#" class="introduction__accordion-link">
+                              جلسه سوم این فصل
+                            </a>
+                          </div>
+                          <div class="introduction__accordion-left">
+                            <span class="introduction__accordion-time">
+                              18:34
+                            </span>
+                          </div>
+                        </Accardion.Body>
+                      </Accardion.Item>
+                    </Accardion>
+                  </div>
+                </div>
+
+                <div class="techer-details">
+                  <div class="techer-details__header">
+                    <div class="techer-details__header-right">
+                      <img
+                        src="/images/info/teacher.jfif"
+                        alt="Teacher Profile"
+                        class="techer-details__header-img"
+                      />
+                      <div class="techer-details__header-titles">
+                        <a href="#" class="techer-details__header-link">
+                          محمدامین سعیدی راد
+                        </a>
+                        <span class="techer-details__header-skill">
+                          Front End & Back End Developer
+                        </span>
                       </div>
                     </div>
-                    <div class="accordion" id="accordionExample2">
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                          <button
-                            class="accordion-button"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo"
-                            aria-expanded="true"
-                            aria-controls="collapseTwo"
-                          >
-                            معرفی دوره
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseTwo"
-                          class="accordion-collapse collapse"
-                          aria-labelledby="headingTwo"
-                          data-bs-parent="#accordionExample2"
-                        >
-                          <div class="accordion-body introduction__accordion-body">
-                            <div class="introduction__accordion-right">
-                              <span class="introduction__accordion-count">
-                                1
-                              </span>
-                              <i class="fab fa-youtube introduction__accordion-icon"></i>
-                              <a href="#" class="introduction__accordion-link">
-                                معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
-                              </a>
-                            </div>
-                            <div class="introduction__accordion-left">
-                              <span class="introduction__accordion-time">
-                                18:34
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                    <div class="techer-details__header-left">
+                      <i class="fas fa-chalkboard-teacher techer-details__header-icon"></i>
+                      <span class="techer-details__header-name">مدرس</span>
+                    </div>
+                  </div>
+                  <p class="techer-details__footer">
+                    اول از همه برنامه نویسی اندروید رو شروع کردم و نزدیک به 2
+                    سال با زبان جاوا اندروید کار میکردم .بعد تصمیم گرفتم در
+                    زمینه وب فعالیت داشته باشم.و..
+                  </p>
+                </div>
+
+                <CommentsTextArea />
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="courses-info">
+                <div class="course-info">
+                  <div class="course-info__register">
+                    <span class="course-info__register-title">
+                      <i class="fas fa-graduation-cap course-info__register-icon"></i>
+                      دانشجوی دوره هستید
+                    </span>
+                  </div>
+                </div>
+                <div class="course-info">
+                  <div class="course-info__total">
+                    <div class="course-info__top">
+                      <div class="course-info__total-sale">
+                        <i class="fas fa-user-graduate course-info__total-sale-icon"></i>
+                        <span class="course-info__total-sale-text">
+                          تعداد دانشجو :
+                        </span>
+                        <span class="course-info__total-sale-number">178</span>
                       </div>
                     </div>
-                    <div class="accordion" id="accordionExample3">
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                          <button
-                            class="accordion-button"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree"
-                            aria-expanded="true"
-                            aria-controls="collapseThree"
-                          >
-                            معرفی دوره
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseThree"
-                          class="accordion-collapse collapse"
-                          aria-labelledby="headingThree"
-                          data-bs-parent="#accordionExample3"
-                        >
-                          <div class="accordion-body introduction__accordion-body">
-                            <div class="introduction__accordion-right">
-                              <span class="introduction__accordion-count">
-                                1
-                              </span>
-                              <i class="fab fa-youtube introduction__accordion-icon"></i>
-                              <a href="#" class="introduction__accordion-link">
-                                معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
-                              </a>
-                            </div>
-                            <div class="introduction__accordion-left">
-                              <span class="introduction__accordion-time">
-                                18:34
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                    <div class="course-info__bottom">
+                      <div class="course-info__total-comment">
+                        <i class="far fa-comments course-info__total-comment-icon"></i>
+                        <span class="course-info__total-comment-text">
+                          67 دیدگاه
+                        </span>
+                      </div>
+                      <div class="course-info__total-view">
+                        <i class="far fa-eye course-info__total-view-icon"></i>
+                        <span class="course-info__total-view-text">
+                          14,234 بازدید
+                        </span>
                       </div>
                     </div>
                   </div>
+                </div>
+                <div class="course-info">
+                  <div class="course-info__header-short-url">
+                    <i class="fas fa-link course-info__short-url-icon"></i>
+                    <span class="course-info__short-url-text">لینک کوتاه</span>
+                  </div>
+                  <span class="course-info__short-url">
+                    https://sabzlearn.ir/?p=117472
+                  </span>
+                </div>
+                <div class="course-info">
+                  <span class="course-info__topic-title">سرفصل های دوره</span>
+                  <span class="course-info__topic-text">
+                    برای مشاهده و یا دانلود دوره روی کلمه
+                    <a href="#" style={{ color: "blue", fontWeight: "bold" }}>
+                      لینک
+                    </a>
+                    کلیک کنید
+                  </span>
+                </div>
+                <div class="course-info">
+                  <span class="course-info__courses-title">دوره های مرتبط</span>
+                  <ul class="course-info__courses-list">
+                    <li class="course-info__courses-list-item">
+                      <a href="#" class="course-info__courses-link">
+                        <img
+                          src="/images/courses/js_project.png"
+                          alt="Course Cover"
+                          class="course-info__courses-img"
+                        />
+                        <span class="course-info__courses-text">
+                          پروژه های تخصصی با جاوا اسکریپت
+                        </span>
+                      </a>
+                    </li>
+                    <li class="course-info__courses-list-item">
+                      <a href="#" class="course-info__courses-link">
+                        <img
+                          src="/images/courses/fareelancer.png"
+                          alt="Course Cover"
+                          class="course-info__courses-img"
+                        />
+                        <span class="course-info__courses-text">
+                          تعیین قیمت پروژه های فریلنسری
+                        </span>
+                      </a>
+                    </li>
+                    <li class="course-info__courses-list-item">
+                      <a href="#" class="course-info__courses-link">
+                        <img
+                          src="/images/courses/nodejs.png"
+                          alt="Course Cover"
+                          class="course-info__courses-img"
+                        />
+                        <span class="course-info__courses-text">
+                          دوره Api نویسی
+                        </span>
+                      </a>
+                    </li>
+                    <li class="course-info__courses-list-item">
+                      <a href="#" class="course-info__courses-link">
+                        <img
+                          src="/images/courses/jango.png"
+                          alt="Course Cover"
+                          class="course-info__courses-img"
+                        />
+                        <span class="course-info__courses-text">
+                          متخصص جنگو
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
