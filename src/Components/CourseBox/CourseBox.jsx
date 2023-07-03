@@ -1,8 +1,12 @@
-import React from "react";
-
+import React, { useState } from "react";
+import CircleSpinner from "../CircleSpinner/CircleSpinner";
 import "./CourseBox.css";
 
 export default function CourseBox() {
+  const [isImgShow, SetIsImgShow] = useState(false);
+
+  const onImageLoaded = () => SetIsImgShow(true);
+
   return (
     <div className="col-4">
       <div className="course-box">
@@ -11,7 +15,9 @@ export default function CourseBox() {
             src="/images/courses/fareelancer.png"
             alt="Course img"
             className="course-box__img"
+            onLoad={onImageLoaded}
           />
+          {!isImgShow && <CircleSpinner />}
         </a>
         <div className="course-box__main">
           <a href="#" className="course-box__title">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./BreadCrumb.css";
 
-export default function Breadcrumb({ links }) {
+export default function BreadCrumb({ links }) {
   return (
     <section class="breadcrumb">
       <div class="container">
