@@ -11,7 +11,6 @@ import CircleSpinner from "../Components/CircleSpinner/CircleSpinner";
 export default function Index() {
   return (
     <div>
-      {/* <CircleSpinner /> */}
       <Header />
       <LastCourses />
       <AboutUs />
