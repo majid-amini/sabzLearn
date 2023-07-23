@@ -21,9 +21,13 @@ export default function Register() {
       <section className="login-register">
         <div className="login register-form">
           <span className="login__title">ساخت حساب کاربری</span>
-          <span className="login__subtitle">خوشحالیم قراره به جمع ما بپیوندی</span>
+          <span className="login__subtitle">
+            خوشحالیم قراره به جمع ما بپیوندی
+          </span>
           <div className="login__new-member">
-            <span className="login__new-member-text">قبلا ثبت‌نام کرده‌اید؟ </span>
+            <span className="login__new-member-text">
+              قبلا ثبت‌نام کرده‌اید؟{" "}
+            </span>
             <Link className="login__new-member-link" to="/login">
               وارد شوید
             </Link>
@@ -46,9 +50,9 @@ export default function Register() {
                 placeholder="آدرس ایمیل"
               />
 
-              <i class="login-form__password-icon fa fa-envelope"></i>
+              <i className="login-form__password-icon fa fa-envelope"></i>
             </div>
-            <div class="login-form__password">
+            <div className="login-form__password">
               <Input
                 element="input"
                 type="text"
@@ -56,7 +60,7 @@ export default function Register() {
                 placeholder="رمز عبور"
               />
 
-              <i class="login-form__password-icon fa fa-lock-open"></i>
+              <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
             <Button
               className="login-form__btn"
