@@ -47,7 +47,6 @@ export default function Login() {
                   requiredValidator(),
                   minValidator(8),
                   maxValidator(18),
-                  emailValidator(),
                 ]}
               />
 
