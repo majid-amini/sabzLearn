@@ -1,8 +1,8 @@
 import rules from "./rules";
 
 const validator = (value, validations) => {
-  console.log(rules);
-  console.log("validator ==> ", value, validations);
+  // console.log(rules);
+  // console.log("validator ==> ", value, validations);
 
   let validationResults = [];
 
@@ -20,7 +20,7 @@ const validator = (value, validations) => {
       !value.trim().includes("@") && validationResults.push(false);
     }
   }
-
+  
   if (validationResults.length) {
     return false;
   } else {

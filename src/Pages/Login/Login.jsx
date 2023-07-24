@@ -46,7 +46,7 @@ export default function Login() {
                 validations={[
                   requiredValidator(),
                   minValidator(8),
-                  maxValidator(18),
+                  // maxValidator(18),
                   emailValidator(),
                 ]}
               />
@@ -59,12 +59,12 @@ export default function Login() {
                 className="login-form__password-input"
                 type="text"
                 placeholder="رمز عبور"
-                // validations={[
-                //   requiredValidator(),
-                //   minValidator(8),
-                //   maxValidator(18),
-                //   emailValidator(),
-                // ]}
+                validations={[
+                  requiredValidator(),
+                  minValidator(8),
+                  maxValidator(18),
+                  emailValidator(),
+                ]}
               />
 
               <i className="login-form__password-icon fa fa-lock-open"></i>

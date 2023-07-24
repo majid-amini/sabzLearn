@@ -6,7 +6,12 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import Input from "../../Components/Form/Input";
 import Button from "../../Components/Form/Button";
-
+import {
+  minValidator,
+  requiredValidator,
+  maxValidator,
+  emailValidator,
+} from "../../validators/rules";
 export default function Register() {
   const registerNewUser = (e) => {
     e.preventDefault();
@@ -26,7 +31,7 @@ export default function Register() {
           </span>
           <div className="login__new-member">
             <span className="login__new-member-text">
-              قبلا ثبت‌نام کرده‌اید؟{" "}
+              قبلا ثبت‌نام کرده‌اید؟
             </span>
             <Link className="login__new-member-link" to="/login">
               وارد شوید
@@ -39,6 +44,12 @@ export default function Register() {
                 className="login-form__username-input"
                 type="text"
                 placeholder="نام کاربری یا آدرس ایمیل"
+                validations={[
+                  requiredValidator(),
+                  minValidator(8),
+                  // maxValidator(18),
+                  emailValidator(),
+                ]}
               />
               <i className="login-form__username-icon fa fa-user"></i>
             </div>
@@ -48,6 +59,12 @@ export default function Register() {
                 type="text"
                 className="login-form__password-input"
                 placeholder="آدرس ایمیل"
+                validations={[
+                  requiredValidator(),
+                  minValidator(8),
+                  // maxValidator(18),
+                  emailValidator(),
+                ]}
               />
 
               <i className="login-form__password-icon fa fa-envelope"></i>
@@ -58,6 +75,12 @@ export default function Register() {
                 type="text"
                 className="login-form__password-input"
                 placeholder="رمز عبور"
+                validations={[
+                  requiredValidator(),
+                  minValidator(8),
+                  // maxValidator(18),
+                  emailValidator(),
+                ]}
               />
 
               <i className="login-form__password-icon fa fa-lock-open"></i>
