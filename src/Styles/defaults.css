@@ -27,6 +27,7 @@ a {
 
 a:hover {
   color: #1e83f0;
+  cursor: pointer;
 }
 
 i {
