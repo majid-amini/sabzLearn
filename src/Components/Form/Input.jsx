@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { useEffect } from "react";
 import validator from "../../validators/validator";
 
 import "./Input.css";
@@ -19,12 +20,17 @@ const inputReducer = (state, action) => {
 };
 
 export default function Input(props) {
-  
 
   const [mainInput, dispatch] = useReducer(inputReducer, {
     value: "",
     isValid: false,
   });
+
+  const {value } = mainInput
+
+  useEffect(() => {   
+    props.onInputHandler()
+  } , [value])
 
   const onChangeHandler = (event) => {
     dispatch({
