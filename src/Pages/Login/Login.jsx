@@ -28,10 +28,14 @@ export default function Login() {
     }
   } , false)
 
+  console.log(formState);
+
   const userLogin = (e) => {
     e.preventDefault();
     console.log("user login");
   };
+
+
 
   return (
     <>
@@ -72,14 +76,13 @@ export default function Login() {
               <Input
                 element="input"
                 className="login-form__password-input"
-                type="text"
+                type="password"
                 placeholder="رمز عبور"
                 id='password'
                 validations={[
                   requiredValidator(),
                   minValidator(8),
                   maxValidator(18),
-                  emailValidator(),
                 ]}
                 onInputHandler={onInputHandler}
               />
@@ -87,10 +90,10 @@ export default function Login() {
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
             <Button
-              className="login-form__btn"
+              className={`login-form__btn ${formState.isFormValid ? 'login-form__btn-success' : 'login-form__btn-error'}`}
               type="submit"
               onClick={userLogin}
-              disabled={false}
+              disabled={!formState.isFormValid}
             >
               <i className="login-form__btn-icon fas fa-sign-out-alt"></i>
               <span className="login-form__btn-text">ورود</span>

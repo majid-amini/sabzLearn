@@ -26,10 +26,11 @@ export default function Input(props) {
     isValid: false,
   });
 
-  const {value } = mainInput
+  const {value , isValid} = mainInput;
+  const {id , onInputHandler} = props ; 
 
   useEffect(() => {   
-    props.onInputHandler()
+    onInputHandler(id , value , isValid )
   } , [value])
 
   const onChangeHandler = (event) => {
