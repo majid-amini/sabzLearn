@@ -12,7 +12,24 @@ import {
   maxValidator,
   emailValidator,
 } from "../../validators/rules";
+import { useForm } from "../../hooks/useForm";
 export default function Register() {
+
+  const [formState , onInputHandler] = useForm({
+    username : {
+      value: '',
+      isValid: false
+    } , 
+    password : {
+      value: '',
+      isValid: false
+    },
+  } , 
+  false
+  );
+
+  console.log(formState);
+
   const registerNewUser = (e) => {
     e.preventDefault();
     console.log("user Register");
@@ -40,6 +57,7 @@ export default function Register() {
           <form action="#" className="login-form">
             <div className="login-form__username">
               <Input
+              id='username'
                 element="input"
                 className="login-form__username-input"
                 type="text"
@@ -47,14 +65,14 @@ export default function Register() {
                 validations={[
                   requiredValidator(),
                   minValidator(8),
-                  // maxValidator(18),
-                  emailValidator(),
                 ]}
+                onInputHandler = {onInputHandler}
               />
               <i className="login-form__username-icon fa fa-user"></i>
             </div>
             <div className="login-form__password">
               <Input
+              id='email'
                 element="input"
                 type="text"
                 className="login-form__password-input"
@@ -62,34 +80,34 @@ export default function Register() {
                 validations={[
                   requiredValidator(),
                   minValidator(8),
-                  // maxValidator(18),
                   emailValidator(),
                 ]}
+                onInputHandler = {onInputHandler}
               />
 
               <i className="login-form__password-icon fa fa-envelope"></i>
             </div>
             <div className="login-form__password">
               <Input
+              id='password'
                 element="input"
-                type="text"
+                type="password"
                 className="login-form__password-input"
                 placeholder="رمز عبور"
                 validations={[
                   requiredValidator(),
                   minValidator(8),
-                  // maxValidator(18),
-                  emailValidator(),
                 ]}
+                onInputHandler = {onInputHandler}
               />
 
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
             <Button
-              className="login-form__btn"
+              className={`login-form__btn ${formState.isFormValid ? 'login-form__btn-success' : 'login-form__btn-error'}`}
               type="submit"
               onClick={registerNewUser}
-              disabled={false}
+              disabled={!formState.isFormValid}
             >
               <i className="login-form__btn-icon fa fa-user-plus"></i>
               <span className="login-form__btn-text">عضویت</span>

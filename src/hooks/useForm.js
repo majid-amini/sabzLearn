@@ -19,7 +19,8 @@ const formReducer = (state , action)=>{
                         value : action.value ,
                         isValid : action.isValid
                     }
-                }
+                },
+                isFormValid : isFormValid
              }
         }
        default : {

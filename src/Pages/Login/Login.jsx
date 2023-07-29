@@ -25,8 +25,10 @@ export default function Login() {
     password : {
       value: '',
       isValid: false
-    }
-  } , false)
+    },
+  } , 
+  false
+  );
 
   console.log(formState);
 
