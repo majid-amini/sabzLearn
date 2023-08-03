@@ -15,9 +15,8 @@ import {
 import { useForm } from "../../hooks/useForm";
 import AuthContext from "../../contex/authcontex";
 export default function Register() {
-  const authcontex = useContext(AuthContext);
-  console.log(authcontex);
-
+  const authContex = useContext(AuthContext);
+  console.log(authContex);
   const [formState, onInputHandler] = useForm(
     {
       name: {
@@ -59,7 +58,10 @@ export default function Register() {
       body: JSON.stringify(newUserInfos),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((result) => {
+        authContex.login(result.user, result.accessToken);
+        console.log(result);
+      });
   };
 
   return (
