@@ -6,8 +6,8 @@ import AuthContext from "./contex/authcontex";
 export default function App() {
   const router = useRoutes(routes);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState(false);
-  const [userInfos, setUserInfos] = {};
+  const [token, setToken] = useState(null);
+  const [userInfos, setUserInfos] = useState({});
 
   const login = (token) => {
     // setIsLoggedIn(true)
@@ -17,7 +17,7 @@ export default function App() {
 
   const logout = () => {
     setToken(null);
-    setUserInfos({})
+    setUserInfos({});
     localStorage.removeItem("user");
   };
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import Topbar from "../../Components/Topbar/Topbar";
@@ -13,7 +13,11 @@ import {
   emailValidator,
 } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
+import AuthContext from "../../contex/authcontex";
 export default function Register() {
+  const authcontex = useContext(AuthContext);
+  console.log(authcontex);
+
   const [formState, onInputHandler] = useForm(
     {
       name: {
@@ -35,8 +39,6 @@ export default function Register() {
     },
     false
   );
-
-  
 
   const registerNewUser = (e) => {
     e.preventDefault();
