@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import Topbar from "../../Components/Topbar/Topbar";
@@ -13,13 +13,32 @@ import {
   emailValidator,
 } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
+import AuthContext from "../../contex/authcontex";
 export default function Register() {
+<<<<<<< HEAD:src/Pages/Register/Register.jsx
   const [formState, onInputHandler] = useForm(
     {
+=======
+  const authContex = useContext(AuthContext);
+  console.log(authContex);
+  const [formState, onInputHandler] = useForm(
+    {
+      name: {
+        value: "",
+        isValid: false,
+      },
+>>>>>>> 301cc0c2a2262fade1754b329aeff36b63248414:frontend/src/Pages/Register/Register.jsx
       username: {
         value: "",
         isValid: false,
       },
+<<<<<<< HEAD:src/Pages/Register/Register.jsx
+=======
+      email: {
+        value: "",
+        isValid: false,
+      },
+>>>>>>> 301cc0c2a2262fade1754b329aeff36b63248414:frontend/src/Pages/Register/Register.jsx
       password: {
         value: "",
         isValid: false,
@@ -28,11 +47,29 @@ export default function Register() {
     false
   );
 
-  console.log(formState);
-
   const registerNewUser = (e) => {
     e.preventDefault();
-    console.log("user Register");
+
+    const newUserInfos = {
+      name: formState.inputs.name.value,
+      username: formState.inputs.username.value,
+      email: formState.inputs.email.value,
+      password: formState.inputs.password.value,
+      confirmPassword: formState.inputs.password.value,
+    };
+
+    fetch(`http://localhost:4000/v1/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserInfos),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        authContex.login(result.user, result.accessToken);
+        console.log(result);
+      });
   };
 
   return (
@@ -57,12 +94,39 @@ export default function Register() {
           <form action="#" className="login-form">
             <div className="login-form__username">
               <Input
+<<<<<<< HEAD:src/Pages/Register/Register.jsx
+=======
+                id="name"
+                element="input"
+                className="login-form__username-input"
+                type="text"
+                placeholder="نام و نام خانوادگی"
+                validations={[
+                  requiredValidator(),
+                  minValidator(6),
+                  maxValidator(20),
+                ]}
+                onInputHandler={onInputHandler}
+              />
+              <i className="login-form__username-icon fa fa-user"></i>
+            </div>
+            <div className="login-form__username">
+              <Input
+>>>>>>> 301cc0c2a2262fade1754b329aeff36b63248414:frontend/src/Pages/Register/Register.jsx
                 id="username"
                 element="input"
                 className="login-form__username-input"
                 type="text"
                 placeholder="نام کاربری یا آدرس ایمیل"
+<<<<<<< HEAD:src/Pages/Register/Register.jsx
                 validations={[requiredValidator(), minValidator(8)]}
+=======
+                validations={[
+                  requiredValidator(),
+                  minValidator(8),
+                  maxValidator(20),
+                ]}
+>>>>>>> 301cc0c2a2262fade1754b329aeff36b63248414:frontend/src/Pages/Register/Register.jsx
                 onInputHandler={onInputHandler}
               />
               <i className="login-form__username-icon fa fa-user"></i>
@@ -76,7 +140,7 @@ export default function Register() {
                 placeholder="آدرس ایمیل"
                 validations={[
                   requiredValidator(),
-                  minValidator(8),
+                  maxValidator(25),
                   emailValidator(),
                 ]}
                 onInputHandler={onInputHandler}
@@ -91,7 +155,15 @@ export default function Register() {
                 type="password"
                 className="login-form__password-input"
                 placeholder="رمز عبور"
+<<<<<<< HEAD:src/Pages/Register/Register.jsx
                 validations={[requiredValidator(), minValidator(8)]}
+=======
+                validations={[
+                  requiredValidator(),
+                  minValidator(8),
+                  maxValidator(18),
+                ]}
+>>>>>>> 301cc0c2a2262fade1754b329aeff36b63248414:frontend/src/Pages/Register/Register.jsx
                 onInputHandler={onInputHandler}
               />
 
