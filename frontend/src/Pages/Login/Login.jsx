@@ -46,14 +46,21 @@ export default function Login() {
       body: JSON.stringify(userData),
     })
       .then((res) => {
+        console.log(res);
         if (!res.ok) {
           return res.text().then((text) => {
             throw new Error(text);
           });
+        } else {
+          return res.json();
         }
+      })
+      .then((result) => {
+        console.log(result);
       })
       .catch((err) => {
         console.log(`err =>`, err);
+        alert("همچین کاربری وجود ندارد");
       });
   };
 
