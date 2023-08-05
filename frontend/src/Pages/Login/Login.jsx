@@ -14,30 +14,48 @@ import {
 } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
 
-
 export default function Login() {
-
-  const [formState , onInputHandler] = useForm({
-    username : {
-      value: '',
-      isValid: false
-    } , 
-    password : {
-      value: '',
-      isValid: false
+  const [formState, onInputHandler] = useForm(
+    {
+      username: {
+        value: "",
+        isValid: false,
+      },
+      password: {
+        value: "",
+        isValid: false,
+      },
     },
-  } , 
-  false
+    false
   );
 
   console.log(formState);
 
   const userLogin = (e) => {
     e.preventDefault();
-    console.log("user login");
+    const userData = {
+      identifier: formState.inputs.username.value,
+      password: formState.inputs.password.value,
+    };
+
+    fetch(`http://localhost:4000/v1/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.text().then((text) => {
+            throw new Error(text);
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(`err =>`, err);
+      });
   };
-
-
 
   return (
     <>
@@ -60,16 +78,16 @@ export default function Login() {
             <div className="login-form__username">
               <Input
                 element="input"
-                id='username'
+                id="username"
                 className="login-form__username-input"
                 type="text"
                 placeholder="نام کاربری یا آدرس ایمیل"
                 validations={[
                   requiredValidator(),
                   minValidator(8),
-                  emailValidator(),
+                  // emailValidator(),
                 ]}
-                onInputHandler = {onInputHandler}
+                onInputHandler={onInputHandler}
               />
 
               <i className="login-form__username-icon fa fa-user"></i>
@@ -80,7 +98,7 @@ export default function Login() {
                 className="login-form__password-input"
                 type="password"
                 placeholder="رمز عبور"
-                id='password'
+                id="password"
                 validations={[
                   requiredValidator(),
                   minValidator(8),
@@ -92,7 +110,11 @@ export default function Login() {
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
             <Button
-              className={`login-form__btn ${formState.isFormValid ? 'login-form__btn-success' : 'login-form__btn-error'}`}
+              className={`login-form__btn ${
+                formState.isFormValid
+                  ? "login-form__btn-success"
+                  : "login-form__btn-error"
+              }`}
               type="submit"
               onClick={userLogin}
               disabled={!formState.isFormValid}
