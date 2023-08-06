@@ -107,11 +107,11 @@
   position: relative;
 }
 
-.login-form__btn-success{
+.login-form__btn-success {
   background-color: #2bce56;
 }
 
-.login-form__btn-error{
+.login-form__btn-error {
   background-color: red;
 }
 
@@ -158,3 +158,12 @@
   margin-top: 1rem;
 }
 /* ============================== Login-Register Style ============================== */
+
+/* swal modal */
+
+.swal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* swal modal */
