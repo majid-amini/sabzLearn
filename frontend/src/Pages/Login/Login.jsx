@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Login.css";
 import Topbar from "../../Components/Topbar/Topbar";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -13,8 +13,9 @@ import {
   emailValidator,
 } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
-
+import AuthContext from "../../contex/authcontex";
 export default function Login() {
+  const authContext = useContext(AuthContext);
   const [formState, onInputHandler] = useForm(
     {
       username: {
@@ -57,11 +58,13 @@ export default function Login() {
       })
       .then((result) => {
         console.log(result);
+        authContext.login({}, result.accessToken);
       })
       .catch((err) => {
         console.log(`err =>`, err);
         alert("همچین کاربری وجود ندارد");
       });
+      console.log(userData);
   };
 
   return (
