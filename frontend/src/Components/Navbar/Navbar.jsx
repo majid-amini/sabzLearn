@@ -18,7 +18,9 @@ export default function Navbar() {
 
             <ul className="main-header__menu">
               <li className="main-header__item">
-                <a className="main-header__link">صفحه اصلی</a>
+                <Link to={"/"} className="main-header__link">
+                  صفحه اصلی
+                </Link>
               </li>
 
               <li className="main-header__item">
@@ -136,7 +138,7 @@ export default function Navbar() {
                 </span>
               </Link>
             ) : (
-              <Link to='./login' className="main-header__profile">
+              <Link to="./login" className="main-header__profile">
                 <span className="main-header__profile-text">
                   ورود / ثبت‌نام
                 </span>
