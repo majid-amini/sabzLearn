@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import Topbar from "../../Components/Topbar/Topbar";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -16,6 +16,7 @@ import { useForm } from "../../hooks/useForm";
 import AuthContext from "../../contex/authcontex";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -33,7 +34,8 @@ export default function Login() {
     },
     false
   );
-
+  const [isGoogleRecaptchaVerified, setIsGoogleRecaptchaVerified] =
+    useState(false);
   console.log(formState);
 
   const userLogin = (e) => {
@@ -82,6 +84,9 @@ export default function Login() {
     console.log(userData);
   };
 
+  const onchangeHandler = () => {
+    setIsGoogleRecaptchaVerified(true)
+  };
   return (
     <>
       <Topbar />
@@ -134,15 +139,19 @@ export default function Login() {
 
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
+            <ReCAPTCHA
+              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              onChange={onchangeHandler}
+            />
             <Button
               className={`login-form__btn ${
-                formState.isFormValid
+                (formState.isFormValid && isGoogleRecaptchaVerified)
                   ? "login-form__btn-success"
                   : "login-form__btn-error"
               }`}
               type="submit"
               onClick={userLogin}
-              disabled={!formState.isFormValid}
+              disabled={!formState.isFormValid || !isGoogleRecaptchaVerified}
             >
               <i className="login-form__btn-icon fas fa-sign-out-alt"></i>
               <span className="login-form__btn-text">ورود</span>
