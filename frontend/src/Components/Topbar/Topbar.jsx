@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Topbar.css";
+import { Link } from "react-router-dom";
 
 export default function Topbar() {
+  const [allTopbarLinks, setAllTopbarLinks] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:4000/v1/menus/topbar`)
+      .then((res) => res.json())
+      .then((data) => setAllTopbarLinks(data));
+  }, []);
+
+  const getRandomItemsFromArray = (arr, randomCount) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, randomCount);
+  };
+
   return (
     <div>
       <div className="top-bar">
@@ -9,27 +22,13 @@ export default function Topbar() {
           <div className="top-bar__content">
             <div className="top-bar__right">
               <ul className="top-bar__menu">
-                <li className="top-bar__item">
-                  <a className="top-bar__link">آموزش Html</a>
-                </li>
-                <li className="top-bar__item">
-                  <a className="top-bar__link">آموزش Css</a>
-                </li>
-                <li className="top-bar__item">
-                  <a className="top-bar__link">آموزش جاوا اسکریپت</a>
-                </li>
-                <li className="top-bar__item">
-                  <a className="top-bar__link">آموزش بوت استرپ</a>
-                </li>
-                <li className="top-bar__item">
-                  <a className="top-bar__link">آموزش پایتون</a>
-                </li>
-                <li className="top-bar__item">
-                  <a className="top-bar__link">آموزش ری‌اکت</a>
-                </li>
-                <li className="top-bar__item">
-                  <a className="top-bar__link">20,000 تومان</a>
-                </li>
+                {getRandomItemsFromArray(allTopbarLinks, 5).map((link) => (
+                  <li className="top-bar__item">
+                    <Link to={link.href} className="top-bar__link">
+                      {link.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="top-bar__left">

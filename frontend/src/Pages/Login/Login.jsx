@@ -139,10 +139,13 @@ export default function Login() {
 
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
+            <div className="login-form__password recaptcha__parent">
             <ReCAPTCHA
               sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
               onChange={onchangeHandler}
             />
+            </div>
+           
             <Button
               className={`login-form__btn ${
                 (formState.isFormValid && isGoogleRecaptchaVerified)
