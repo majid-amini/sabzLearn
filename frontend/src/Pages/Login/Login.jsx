@@ -72,6 +72,7 @@ export default function Login() {
           navigate("/");
         });
         authContext.login({}, result.accessToken);
+        
       })
       .catch((err) => {
         console.log(`err =>`, err);
