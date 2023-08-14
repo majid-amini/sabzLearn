@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Topbar from "../../Components/Topbar/Topbar";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
@@ -12,7 +12,11 @@ import { useParams } from "react-router-dom";
 
 export default function CourseInfo() {
   const { courseName } = useParams();
-
+  const [comments, setComments] = useState([]);
+  const [sessions, setSessions] = useState([]);
+  const [courseDetails, setCourseDetails] = useState({});
+  const [createdAt, setCreatedAt] = useState("");
+  const [updatedAt, setUpdatedAt] = useState("");
   useEffect(() => {
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: "GET",
@@ -20,10 +24,15 @@ export default function CourseInfo() {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem("user")).token
         }`,
-      }
+      },
     })
       .then((res) => res.json())
       .then((courseData) => {
+        setComments(courseData.comments);
+        setSessions(courseData.sessions);
+        setCourseDetails(courseData);
+        setCreatedAt(courseData.createdAt);
+        setUpdatedAt(courseData.updatedAt);
         console.log(courseData);
       });
   }, []);
@@ -54,17 +63,8 @@ export default function CourseInfo() {
               <a href="#" className="course-info__link">
                 آموزش برنامه نویسی فرانت اند
               </a>
-              <h1 className="course-info__title">
-                آموزش 20 کتابخانه جاوااسکریپت برای بازار کار
-              </h1>
-              <p className="course-info__text">
-                امروزه کتابخانه‌ها کد نویسی را خیلی آسان و لذت بخش تر کرده اند.
-                به قدری که حتی امروزه هیچ شرکت برنامه نویسی پروژه های خود را با
-                Vanilla Js پیاده سازی نمی کند و همیشه از کتابخانه ها و فریمورک
-                های موجود استفاده می کند. پس شما هم اگه میخواید یک برنامه نویس
-                عالی فرانت اند باشید، باید کتابخانه های کاربردی که در بازار کار
-                استفاده می شوند را به خوبی بلد باشید
-              </p>
+              <h1 className="course-info__title">{courseDetails.name}</h1>
+              <p className="course-info__text">{courseDetails.description}</p>
               <div className="course-info__social-media">
                 <a href="#" className="course-info__social-media-item">
                   <i className="fab fa-telegram-plane course-info__icon"></i>
@@ -100,33 +100,21 @@ export default function CourseInfo() {
                     <CourseDetailBox
                       icon="graduation-cap"
                       title="وضعیت دوره:"
-                      text="به اتمام رسیده"
+                      text={
+                        courseDetails.isComplete == 1
+                          ? " به اتمام رسیده "
+                          : "در حال برگزاری"
+                      }
                     />
                     <CourseDetailBox
                       icon="clock"
-                      title=" مدت زمان دوره:"
-                      text="19 ساعت"
-                      o
+                      title="زمان برگزاری :"
+                      text={createdAt.slice(0, 10)}
                     />
                     <CourseDetailBox
                       icon="calendar-alt"
                       title="آخرین بروزرسانی:"
-                      text="1401/03/02"
-                    />
-                    <CourseDetailBox
-                      icon="graduation-cap"
-                      title="وضعیت دوره:"
-                      text="به اتمام رسیده"
-                    />
-                    <CourseDetailBox
-                      icon="clock"
-                      title=" مدت زمان دوره:"
-                      text="19 ساعت"
-                    />
-                    <CourseDetailBox
-                      icon="calendar-alt"
-                      title="آخرین بروزرسانی:"
-                      text="1401/03/02"
+                      text={updatedAt.slice(0, 10)}
                     />
                   </div>
                 </div>
@@ -231,89 +219,29 @@ export default function CourseInfo() {
                   <div className="introduction__topic">
                     <Accardion defaultActiveKey="0">
                       <Accardion.Item eventKey="0" className="accordion">
-                        <Accardion.Header>معرفی دوره</Accardion.Header>
-                        <Accardion.Body className="introduction__accordion-body">
-                          <div className="introduction__accordion-right">
-                            <span className="introduction__accordion-count">
-                              1
-                            </span>
-                            <i className="fab fa-youtube introduction__accordion-icon"></i>
-                            <a
-                              href="#"
-                              className="introduction__accordion-link"
-                            >
-                              معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
-                            </a>
-                          </div>
-                          <div className="introduction__accordion-left">
-                            <span className="introduction__accordion-time">
-                              18:34
-                            </span>
-                          </div>
-                        </Accardion.Body>
-                      </Accardion.Item>
-
-                      <Accardion.Item eventKey="1" className="accordion">
-                        <Accardion.Header>
-                          اصطلاحات مقدماتی مربوط به بک اند
-                        </Accardion.Header>
-                        <Accardion.Body className="introduction__accordion-body">
-                          <div className="introduction__accordion-right">
-                            <span className="introduction__accordion-count">
-                              1
-                            </span>
-                            <i className="fab fa-youtube introduction__accordion-icon"></i>
-                            <a
-                              href="#"
-                              className="introduction__accordion-link"
-                            >
-                              معرفی دوره + چرا یادگیری کتابخانه ها ضروری است؟
-                            </a>
-                          </div>
-                          <div className="introduction__accordion-left">
-                            <span className="introduction__accordion-time">
-                              18:34
-                            </span>
-                          </div>
-                        </Accardion.Body>
-                        <Accardion.Body className="introduction__accordion-body">
-                          <div className="introduction__accordion-right">
-                            <span className="introduction__accordion-count">
-                              2
-                            </span>
-                            <i className="fab fa-youtube introduction__accordion-icon"></i>
-                            <a
-                              href="#"
-                              className="introduction__accordion-link"
-                            >
-                              جلسه دوم این فصل
-                            </a>
-                          </div>
-                          <div className="introduction__accordion-left">
-                            <span className="introduction__accordion-time">
-                              18:34
-                            </span>
-                          </div>
-                        </Accardion.Body>
-                        <Accardion.Body className="introduction__accordion-body">
-                          <div className="introduction__accordion-right">
-                            <span className="introduction__accordion-count">
-                              3
-                            </span>
-                            <i className="fab fa-youtube introduction__accordion-icon"></i>
-                            <a
-                              href="#"
-                              className="introduction__accordion-link"
-                            >
-                              جلسه سوم این فصل
-                            </a>
-                          </div>
-                          <div className="introduction__accordion-left">
-                            <span className="introduction__accordion-time">
-                              18:34
-                            </span>
-                          </div>
-                        </Accardion.Body>
+                        <Accardion.Header> جلسات دوره</Accardion.Header>
+                        {sessions.map((session,index) => (
+                          <Accardion.Body className="introduction__accordion-body">
+                            
+                            <div className="introduction__accordion-right">
+                              <span className="introduction__accordion-count">
+                                {index + 1}
+                              </span>
+                              <i className="fab fa-youtube introduction__accordion-icon"></i>
+                              <a
+                                href="#"
+                                className="introduction__accordion-link"
+                              >
+                                {session.title}
+                              </a>
+                            </div>
+                            <div className="introduction__accordion-left">
+                              <span className="introduction__accordion-time">
+                                {session.time}
+                              </span>
+                            </div>
+                          </Accardion.Body>
+                        ))}
                       </Accardion.Item>
                     </Accardion>
                   </div>
@@ -358,7 +286,9 @@ export default function CourseInfo() {
                   <div className="course-info__register">
                     <span className="course-info__register-title">
                       <i className="fas fa-graduation-cap course-info__register-icon"></i>
-                      دانشجوی دوره هستید
+                      {courseDetails.isUserRegisteredToThisCourse
+                        ? "دانشجوی دوره هستید"
+                        : "ثبت نام در دوره"}
                     </span>
                   </div>
                 </div>
@@ -371,7 +301,7 @@ export default function CourseInfo() {
                           تعداد دانشجو :
                         </span>
                         <span className="course-info__total-sale-number">
-                          178
+                          {courseDetails.courseStudentsCount}
                         </span>
                       </div>
                     </div>
