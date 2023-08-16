@@ -276,7 +276,7 @@ export default function CourseInfo() {
                   </p>
                 </div>
 
-                <CommentsTextArea />
+                <CommentsTextArea comments={comments}/>
               </div>
             </div>
 
