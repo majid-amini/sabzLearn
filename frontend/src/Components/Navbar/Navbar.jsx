@@ -68,7 +68,7 @@ export default function Navbar() {
                 </span>
               </Link>
             ) : (
-              <Link to="./login" className="main-header__profile">
+              <Link to="/login" className="main-header__profile">
                 <span className="main-header__profile-text">
                   ورود / ثبت‌نام
                 </span>

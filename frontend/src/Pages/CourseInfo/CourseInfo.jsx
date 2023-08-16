@@ -17,16 +17,17 @@ export default function CourseInfo() {
   const [courseDetails, setCourseDetails] = useState({});
   const [createdAt, setCreatedAt] = useState("");
   const [updatedAt, setUpdatedAt] = useState("");
+
   useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
-    
+
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${
           localStorageData === null ? null : localStorageData.token
         }
-        }`,
+        `,
       },
     })
       .then((res) => res.json())
@@ -39,6 +40,7 @@ export default function CourseInfo() {
         console.log(courseData);
       });
   }, []);
+
   return (
     <div>
       <Topbar />
