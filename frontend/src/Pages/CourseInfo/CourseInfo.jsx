@@ -220,35 +220,39 @@ export default function CourseInfo() {
                       دانلود همگانی پیوست‌ها
                     </a>
                   </div>
+                  {sessions.length !== 0 && (
+                    <div className="introduction__topic">
+                      <Accardion defaultActiveKey="0">
+                        <Accardion.Item eventKey="0" className="accordion">
+                          <Accardion.Header> جلسات دوره</Accardion.Header>
 
-                  <div className="introduction__topic">
-                    <Accardion defaultActiveKey="0">
-                      <Accardion.Item eventKey="0" className="accordion">
-                        <Accardion.Header> جلسات دوره</Accardion.Header>
-                        {sessions.map((session, index) => (
-                          <Accardion.Body className="introduction__accordion-body">
-                            <div className="introduction__accordion-right">
-                              <span className="introduction__accordion-count">
-                                {index + 1}
-                              </span>
-                              <i className="fab fa-youtube introduction__accordion-icon"></i>
-                              <a
-                                href="#"
-                                className="introduction__accordion-link"
-                              >
-                                {session.title}
-                              </a>
-                            </div>
-                            <div className="introduction__accordion-left">
-                              <span className="introduction__accordion-time">
-                                {session.time}
-                              </span>
-                            </div>
-                          </Accardion.Body>
-                        ))}
-                      </Accardion.Item>
-                    </Accardion>
-                  </div>
+                          <>
+                            {sessions.map((session, index) => (
+                              <Accardion.Body className="introduction__accordion-body">
+                                <div className="introduction__accordion-right">
+                                  <span className="introduction__accordion-count">
+                                    {index + 1}
+                                  </span>
+                                  <i className="fab fa-youtube introduction__accordion-icon"></i>
+                                  <a
+                                    href="#"
+                                    className="introduction__accordion-link"
+                                  >
+                                    {session.title}
+                                  </a>
+                                </div>
+                                <div className="introduction__accordion-left">
+                                  <span className="introduction__accordion-time">
+                                    {session.time}
+                                  </span>
+                                </div>
+                              </Accardion.Body>
+                            ))}
+                          </>
+                        </Accardion.Item>
+                      </Accardion>
+                    </div>
+                  )}
                 </div>
 
                 <div className="techer-details">
