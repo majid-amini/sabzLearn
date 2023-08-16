@@ -18,11 +18,14 @@ export default function CourseInfo() {
   const [createdAt, setCreatedAt] = useState("");
   const [updatedAt, setUpdatedAt] = useState("");
   useEffect(() => {
+    const localStorageData = JSON.parse(localStorage.getItem("user"));
+    
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("user")).token
+          localStorageData === null ? null : localStorageData.token
+        }
         }`,
       },
     })
@@ -220,9 +223,8 @@ export default function CourseInfo() {
                     <Accardion defaultActiveKey="0">
                       <Accardion.Item eventKey="0" className="accordion">
                         <Accardion.Header> جلسات دوره</Accardion.Header>
-                        {sessions.map((session,index) => (
+                        {sessions.map((session, index) => (
                           <Accardion.Body className="introduction__accordion-body">
-                            
                             <div className="introduction__accordion-right">
                               <span className="introduction__accordion-count">
                                 {index + 1}
@@ -276,7 +278,7 @@ export default function CourseInfo() {
                   </p>
                 </div>
 
-                <CommentsTextArea comments={comments}/>
+                <CommentsTextArea comments={comments} />
               </div>
             </div>
 

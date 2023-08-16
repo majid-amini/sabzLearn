@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./CommentsTextArea.css";
+import AuthContext from "../../contex/authcontex";
+import { Link } from "react-router-dom";
 
 export default function CommentsTextArea({ comments }) {
+  const authcontex = useContext(AuthContext);
   return (
     <div class="comments">
       <div class="comments__header">
@@ -13,7 +16,9 @@ export default function CommentsTextArea({ comments }) {
       </div>
       <div class="comments__content">
         {comments.length == 0 ? (
-          <div className="alert alert-warning">هنوز هیچ کامنتی ثبت نشده است</div> 
+          <div className="alert alert-warning">
+            هنوز هیچ کامنتی ثبت نشده است
+          </div>
         ) : (
           <>
             {comments.map((comment) => (
@@ -49,76 +54,82 @@ export default function CommentsTextArea({ comments }) {
               </div>
             ))}
             <div class="comments__pagantion">
-          <ul class="comments__pagantion-list">
-            <li class="comments__pagantion-item">
-              <a href="#" class="comments__pagantion-link">
-                <i class="fas fa-long-arrow-alt-right comments__pagantion-icon"></i>
-              </a>
-            </li>
-            <li class="comments__pagantion-item">
-              <a href="#" class="comments__pagantion-link">
-                1
-              </a>
-            </li>
-            <li class="comments__pagantion-item">
-              <a href="#" class="comments__pagantion-link">
-                2
-              </a>
-            </li>
-            <li class="comments__pagantion-item">
-              <a
-                href="#"
-                class="comments__pagantion-link comments__pagantion-link--active"
-              >
-                3
-              </a>
-            </li>
-          </ul>
-        </div>
+              <ul class="comments__pagantion-list">
+                <li class="comments__pagantion-item">
+                  <a href="#" class="comments__pagantion-link">
+                    <i class="fas fa-long-arrow-alt-right comments__pagantion-icon"></i>
+                  </a>
+                </li>
+                <li class="comments__pagantion-item">
+                  <a href="#" class="comments__pagantion-link">
+                    1
+                  </a>
+                </li>
+                <li class="comments__pagantion-item">
+                  <a href="#" class="comments__pagantion-link">
+                    2
+                  </a>
+                </li>
+                <li class="comments__pagantion-item">
+                  <a
+                    href="#"
+                    class="comments__pagantion-link comments__pagantion-link--active"
+                  >
+                    3
+                  </a>
+                </li>
+              </ul>
+            </div>
           </>
         )}
-
-        
       </div>
 
-      <div class="comments__rules">
-        <span class="comments__rules-title">قوانین ثبت دیدگاه</span>
-        <span class="comments__rules-item">
-          <i class="fas fa-check comments__rules-icon"></i>
-          اگر نیاز به پشتیبانی دوره دارید از قسمت پرسش سوال در قسمت نمایش انلاین
-          استفاده نمایید و سوالات مربوط به رفع اشکال تایید نخواهند شد
-        </span>
-        <span class="comments__rules-item">
-          <i class="fas fa-check comments__rules-icon"></i>
-          دیدگاه های نامرتبط به دوره تایید نخواهد شد.
-        </span>
-        <span class="comments__rules-item">
-          <i class="fas fa-check comments__rules-icon"></i>
-          سوالات مرتبط با رفع اشکال در این بخش تایید نخواهد شد.
-        </span>
-        <span class="comments__rules-item">
-          <i class="fas fa-check comments__rules-icon"></i>
-          از درج دیدگاه های تکراری پرهیز نمایید.
-        </span>
-      </div>
-      <div class="comments__respond">
-        <div class="comments__score">
-          <span class="comments__score-title">امتیاز شما</span>
-          <div class="comments__score-input">
-            <span class="comments__score-input-text">
-              امتیاز خود را انتخاب کنید
+      {authcontex.isLoggedIn === true ? (
+        <>
+          <div class="comments__rules">
+            <span class="comments__rules-title">قوانین ثبت دیدگاه</span>
+            <span class="comments__rules-item">
+              <i class="fas fa-check comments__rules-icon"></i>
+              اگر نیاز به پشتیبانی دوره دارید از قسمت پرسش سوال در قسمت نمایش
+              انلاین استفاده نمایید و سوالات مربوط به رفع اشکال تایید نخواهند شد
             </span>
-            <i class="fas fa-angle-down	 comments__input-icon"></i>
+            <span class="comments__rules-item">
+              <i class="fas fa-check comments__rules-icon"></i>
+              دیدگاه های نامرتبط به دوره تایید نخواهد شد.
+            </span>
+            <span class="comments__rules-item">
+              <i class="fas fa-check comments__rules-icon"></i>
+              سوالات مرتبط با رفع اشکال در این بخش تایید نخواهد شد.
+            </span>
+            <span class="comments__rules-item">
+              <i class="fas fa-check comments__rules-icon"></i>
+              از درج دیدگاه های تکراری پرهیز نمایید.
+            </span>
           </div>
+          <div class="comments__respond">
+            <div class="comments__score">
+              <span class="comments__score-title">امتیاز شما</span>
+              <div class="comments__score-input">
+                <span class="comments__score-input-text">
+                  امتیاز خود را انتخاب کنید
+                </span>
+                <i class="fas fa-angle-down	 comments__input-icon"></i>
+              </div>
+            </div>
+            <div class="comments__respond-content">
+              <div class="comments__respond-title">دیدگاه شما *</div>
+              <textarea class="comments__score-input-respond"></textarea>
+            </div>
+            <button type="submit" class="comments__respond-btn">
+              ارسال
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className="alert alert-danger">
+          برای ثبت کامنت باید <Link to={'/login'}>لاگین کنید</Link>
         </div>
-        <div class="comments__respond-content">
-          <div class="comments__respond-title">دیدگاه شما *</div>
-          <textarea class="comments__score-input-respond"></textarea>
-        </div>
-        <button type="submit" class="comments__respond-btn">
-          ارسال
-        </button>
-      </div>
+      )}
     </div>
   );
 }
