@@ -12,8 +12,8 @@ export default function BreadCrumb({ links }) {
             <i className="fas fa-home breadcrumb__home-icon"></i>
           </div>
           <ul className="breadcrumb__list">
-            {links.map((link) => (
-              <li className="breadcrumb__item">
+            {links.map((link, index) => (
+              <li key={index + 1} className="breadcrumb__item">
                 <Link to={`/${link.to}`} className="breadcrumb__link">
                   {link.title}
                   {link.id !== links.length ? (

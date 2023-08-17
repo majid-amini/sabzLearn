@@ -55,12 +55,12 @@ export default function Navbar() {
           </div>
 
           <div className="main-header__left">
-            <a className="main-header__search-btn">
+            <Link className="main-header__search-btn">
               <i className="fas fa-search main-header__search-icon"></i>
-            </a>
-            <a className="main-header__cart-btn">
+            </Link>
+            <Link className="main-header__cart-btn">
               <i className="fas fa-shopping-cart main-header__cart-icon"></i>
-            </a>
+            </Link>
             {authContex.isLoggedIn ? (
               <Link to="#" className="main-header__profile">
                 <span className="main-header__profile-text">

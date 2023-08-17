@@ -9,6 +9,7 @@ import CourseDetailBox from "../../Components/CourseDetailBox/CourseDetailBox";
 import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
 import Accardion from "react-bootstrap/Accordion";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 export default function CourseInfo() {
   const { courseName } = useParams();
@@ -40,6 +41,31 @@ export default function CourseInfo() {
         console.log(courseData);
       });
   }, []);
+
+  
+  const submitComment = (newCommentBody) => {
+    const localStorageData = JSON.parse(localStorage.getItem("user"));
+    fetch(`http://localhost:4000/v1/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorageData.token}`,
+      },
+      body: JSON.stringify({
+        body: newCommentBody,
+        courseShortName: courseName,
+        score: 5,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        swal({
+          title: "کامنت مورد نظر با موفقت ثبت شد",
+          icon: "success",
+          button: "تایید"
+        })
+      });
+  };
 
   return (
     <div>
@@ -228,7 +254,10 @@ export default function CourseInfo() {
 
                           <>
                             {sessions.map((session, index) => (
-                              <Accardion.Body className="introduction__accordion-body">
+                              <Accardion.Body
+                                key={index + 1}
+                                className="introduction__accordion-body"
+                              >
                                 <div className="introduction__accordion-right">
                                   <span className="introduction__accordion-count">
                                     {index + 1}
@@ -284,7 +313,10 @@ export default function CourseInfo() {
                   </p>
                 </div>
 
-                <CommentsTextArea comments={comments} />
+                <CommentsTextArea
+                  comments={comments}
+                  submitComment={submitComment}
+                />
               </div>
             </div>
 
