@@ -8,7 +8,7 @@ import "./CourseInfo.css";
 import CourseDetailBox from "../../Components/CourseDetailBox/CourseDetailBox";
 import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
 import Accardion from "react-bootstrap/Accordion";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import swal from "sweetalert";
 
 export default function CourseInfo() {
@@ -39,10 +39,10 @@ export default function CourseInfo() {
         setCreatedAt(courseData.createdAt);
         setUpdatedAt(courseData.updatedAt);
         console.log(courseData);
+        
       });
   }, []);
 
-  
   const submitComment = (newCommentBody) => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
     fetch(`http://localhost:4000/v1/comments`, {
@@ -62,8 +62,8 @@ export default function CourseInfo() {
         swal({
           title: "کامنت مورد نظر با موفقت ثبت شد",
           icon: "success",
-          button: "تایید"
-        })
+          button: "تایید",
+        });
       });
   };
 
@@ -91,9 +91,9 @@ export default function CourseInfo() {
         <div className="container">
           <div className="row">
             <div className="col-6">
-              <a href="#" className="course-info__link">
+              <Link to="/" className="course-info__link">
                 آموزش برنامه نویسی فرانت اند
-              </a>
+              </Link>
               <h1 className="course-info__title">{courseDetails.name}</h1>
               <p className="course-info__text">{courseDetails.description}</p>
               <div className="course-info__social-media">

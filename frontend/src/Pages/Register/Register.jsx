@@ -48,6 +48,7 @@ export default function Register() {
       email: formState.inputs.email.value,
       password: formState.inputs.password.value,
       confirmPassword: formState.inputs.password.value,
+      phone: '0911111111',
     };
 
     fetch(`http://localhost:4000/v1/auth/register`, {
