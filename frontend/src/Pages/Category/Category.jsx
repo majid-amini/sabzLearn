@@ -19,7 +19,7 @@ export default function Category() {
         console.log(categories);
         setCourses(categories);
       });
-  }, []);
+  }, [categoryName]);
   return (
     <>
       <Topbar />
