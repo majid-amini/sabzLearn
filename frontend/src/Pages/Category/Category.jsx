@@ -8,9 +8,9 @@ import Pagination from "../../Components/Pagination/Pagination";
 import { useParams } from "react-router-dom";
 
 export default function Category() {
-  const { categoryName } = useParams();
-
+  
   const [courses, setCourses] = useState([]);
+  const { categoryName } = useParams();
 
   useEffect(() => {
     fetch(`http://localhost:4000/v1/courses/category/${categoryName}`)
