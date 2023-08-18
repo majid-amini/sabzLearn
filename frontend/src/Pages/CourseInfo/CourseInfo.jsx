@@ -39,7 +39,6 @@ export default function CourseInfo() {
         setCreatedAt(courseData.createdAt);
         setUpdatedAt(courseData.updatedAt);
         console.log(courseData);
-        
       });
   }, []);
 
@@ -140,12 +139,12 @@ export default function CourseInfo() {
                     <CourseDetailBox
                       icon="clock"
                       title="زمان برگزاری :"
-                      text={createdAt.slice(0, 10)}
+                      text={createdAt.slice(0, 6)}
                     />
                     <CourseDetailBox
                       icon="calendar-alt"
                       title="آخرین بروزرسانی:"
-                      text={updatedAt.slice(0, 10)}
+                      text={updatedAt.slice(0, 6)}
                     />
                   </div>
                 </div>

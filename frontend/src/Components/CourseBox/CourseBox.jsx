@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 
 export default function CourseBox(props) {
   const [isImgShow, SetIsImgShow] = useState(false);
-
+  const baseUrl = "http://localhost:4000/courses/covers/"
   const onImageLoaded = () => SetIsImgShow(true);
-
+  console.log(props);
   return (
     <div className="col-4">
       <div className="course-box">
         <Link to={`/course-info/${props.shortName}`}>
           <img
-            src={props.cover}
+            src={`${baseUrl}${props.cover}`}
             alt="Course img"
             className="course-box__img"
             onLoad={onImageLoaded}
@@ -21,19 +21,16 @@ export default function CourseBox(props) {
           {!isImgShow && <CircleSpinner />}
         </Link>
         <div className="course-box__main">
-          <Link
-            to={`/course-info/${props.shortName}`}
-            className="course-box__title"
-          >
+          <Link to={`/course-info/${props.shortName}`} className="course-box__title">
             {props.name}
           </Link>
 
           <div className="course-box__rating-teacher">
             <div className="course-box__teacher">
               <i className="fas fa-chalkboard-teacher course-box__teacher-icon"></i>
-              <a href="#" className="course-box__teacher-link">
+              <Link to="#" className="course-box__teacher-link">
                 {props.creator}
-              </a>
+              </Link>
             </div>
             <div className="course-box__rating">
               <img
