@@ -28,7 +28,7 @@ export default function Courses() {
           {
             id: 2,
             title: "تمامی دوره ها",
-            to: "courses",
+            to: "courses/1",
           },
         ]}
       />
