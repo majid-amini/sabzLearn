@@ -7,7 +7,7 @@ export default function CourseBox(props) {
   const [isImgShow, SetIsImgShow] = useState(false);
   const baseUrl = "http://localhost:4000/courses/covers/"
   const onImageLoaded = () => SetIsImgShow(true);
-  console.log(props);
+  
   return (
     <div className="col-4">
       <div className="course-box">

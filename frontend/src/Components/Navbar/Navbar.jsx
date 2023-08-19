@@ -12,7 +12,7 @@ export default function Navbar() {
       .then((res) => res.json())
       .then((menus) => setAllMenus(menus));
   }, []);
-  console.log(authContex);
+  // console.log(authContex);
   return (
     <div className="main-header">
       <div className="container-fluid">

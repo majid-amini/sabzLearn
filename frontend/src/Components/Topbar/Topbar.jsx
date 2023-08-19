@@ -14,7 +14,7 @@ export default function Topbar() {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, randomCount);
   };
-console.log(allTopbarLinks);
+// console.log(allTopbarLinks);
   return (
     <div>
       <div className="top-bar">

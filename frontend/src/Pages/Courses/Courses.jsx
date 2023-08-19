@@ -5,15 +5,19 @@ import BreadCrumb from "../../Components/BreadCrumb/BreadCrumb";
 import Footer from "../../Components/Footer/Footer";
 import CourseBox from "../../Components/CourseBox/CourseBox";
 import "./Courses.css";
+import Pagination from "../../Components/Pagination/Pagination";
+
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
-
+  const [showCourses, setShowCourses] = useState([]);
+  
   useEffect(() => {
     fetch(`http://localhost:4000/v1/courses`)
       .then((res) => res.json())
       .then((allCourses) => setCourses(allCourses));
   }, []);
+  
   return (
     <div>
       <Topbar />
@@ -34,40 +38,19 @@ export default function Courses() {
           <div className="courses-content">
             <div className="container">
               <div className="row">
-                {courses.map((course) => (
-                  <CourseBox {...course} />
+                {showCourses.map((course) => (
+                  <CourseBox key={course.id} {...course} />
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="courses-pagination">
-            <ul className="courses__pagination-list">
-              <li className="courses__pagination-item">
-                <a href="#" className="courses__pagination-link">
-                  <i className="fas fa-long-arrow-alt-right courses__pagination-icon"></i>
-                </a>
-              </li>
-              <li className="courses__pagination-item">
-                <a
-                  href="#"
-                  className="courses__pagination-link courses__pagination-link--active"
-                >
-                  1
-                </a>
-              </li>
-              <li className="courses__pagination-item">
-                <a href="#" className="courses__pagination-link">
-                  2
-                </a>
-              </li>
-              <li className="courses__pagination-item">
-                <a href="#" className="courses__pagination-link">
-                  3
-                </a>
-              </li>
-            </ul>
-          </div>
+          <Pagination 
+          items={courses}
+          itemCount={3}
+          pathName="/courses"
+          setShowCourses={setShowCourses}
+          />
         </div>
       </section>
 
