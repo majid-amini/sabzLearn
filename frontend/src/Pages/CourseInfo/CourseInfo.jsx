@@ -379,9 +379,9 @@ export default function CourseInfo() {
                   <span className="course-info__topic-text">
                     برای مشاهده و یا دانلود دوره روی کلمه
                     <a href="#" style={{ color: "blue", fontWeight: "bold" }}>
-                      لینک
+                      لینک  
                     </a>
-                    کلیک کنید
+                    کلیک کنید  
                   </span>
                 </div>
                 <div className="course-info">
