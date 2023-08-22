@@ -31,6 +31,7 @@ export default function PresellCourses() {
                   pagination={{
                     clickable: true,
                   }}
+                  loop={true}
                   className="mySwiper"
                 >
                   {presellCourses.map((presellCourse) => (
