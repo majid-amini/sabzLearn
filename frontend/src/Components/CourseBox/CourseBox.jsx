@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 export default function CourseBox(props) {
   const [isImgShow, SetIsImgShow] = useState(false);
-  const baseUrl = "http://localhost:4000/courses/covers/"
+  const baseUrl = "http://localhost:4000/courses/covers/";
   const onImageLoaded = () => SetIsImgShow(true);
-  
+
   return (
-    <div className="col-4">
+    <div className="col-4" style={{ width: `${props.isSlider && "100%"} ` }}>
       <div className="course-box">
         <Link to={`/course-info/${props.shortName}`}>
           <img
@@ -21,7 +21,10 @@ export default function CourseBox(props) {
           {!isImgShow && <CircleSpinner />}
         </Link>
         <div className="course-box__main">
-          <Link to={`/course-info/${props.shortName}`} className="course-box__title">
+          <Link
+            to={`/course-info/${props.shortName}`}
+            className="course-box__title"
+          >
             {props.name}
           </Link>
 
