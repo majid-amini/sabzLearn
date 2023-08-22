@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
-import Topbar from "../../Components/Topbar/Topbar";
-import Navbar from "../../Components/Navbar/Navbar";
+import ArticleBox from "../../Components/ArticleBox/ArticleBox";
 import BreadCrumb from "../../Components/BreadCrumb/BreadCrumb";
 import Footer from "../../Components/Footer/Footer";
-import CourseBox from "../../Components/CourseBox/CourseBox";
-import "./Courses.css";
+import Navbar from "../../Components/Navbar/Navbar";
+import Topbar from "../../Components/Topbar/Topbar";
 import Pagination from "../../Components/Pagination/Pagination";
+import "./Articles.css";
 
-
-export default function Courses() {
-  const [courses, setCourses] = useState([]);
-  const [showCourses, setShowCourses] = useState([]);
-  
+export default function Articles() {
+  const [articles, setArticles] = useState([]);
+  const [showArticles, setShowArticles] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:4000/v1/courses`)
+    fetch(`http://localhost:4000/v1/articles`)
       .then((res) => res.json())
-      .then((allCourses) => setCourses(allCourses));
+      .then((allArticles) => setArticles(allArticles));
   }, []);
-  
+
   return (
-    <div>
+    <>
       <Topbar />
       <Navbar />
+
       <BreadCrumb
         links={[
           { id: 1, title: "خانه", to: "" },
           {
             id: 2,
-            title: "تمامی دوره ها",
-            to: "courses/1",
+            title: "تمامی مقاله ها",
+            to: "articles/1",
           },
         ]}
       />
@@ -38,23 +37,23 @@ export default function Courses() {
           <div className="courses-content">
             <div className="container">
               <div className="row">
-                {showCourses.map((course) => (
-                  <CourseBox key={course.id} {...course} />
+                {showArticles.map((article) => (
+                  <ArticleBox {...article} />
                 ))}
               </div>
             </div>
           </div>
 
-          <Pagination 
-          items={courses}
-          itemCount={3}
-          pathName="/courses"
-          setShowItems={setShowCourses}
+          <Pagination
+            items={articles}
+            itemCount={3}
+            pathName="/articles"
+            setShowItems={setShowArticles}
           />
         </div>
       </section>
 
       <Footer />
-    </div>
+    </>
   );
 }

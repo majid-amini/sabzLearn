@@ -20,7 +20,8 @@ export default function LastArticles() {
         <SectionHeader
           title={"جدیدترین مقاله ها "}
           desc={"پیش به سوی ارتقای دانش"}
-          btnTitle={"تمامی دوره ها"}
+          btnTitle={"تمامی  مقاله ها"}
+          btnHref={"articles/1"}
         />
 
         <div className="articles__content">
