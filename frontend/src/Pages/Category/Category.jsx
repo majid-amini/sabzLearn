@@ -6,7 +6,7 @@ import CourseBox from "../../Components/CourseBox/CourseBox";
 import "./Category.css";
 import Pagination from "../../Components/Pagination/Pagination";
 import { useParams } from "react-router-dom";
-import Courses from "../Courses/Courses";
+// import Courses from "../Courses/Courses";
 
 export default function Category() {
   const [courses, setCourses] = useState([]);
@@ -15,6 +15,7 @@ export default function Category() {
   const [status, setStatus] = useState("default");
   const { categoryName } = useParams();
   const [statusTitle, setStatusTitle] = useState("مرتب سازی پیش فرض");
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:4000/v1/courses/category/${categoryName}`)
@@ -70,6 +71,14 @@ export default function Category() {
 
   const titleChangeHandler = (event) => {
     setStatusTitle(event.target.textContent);
+  };
+
+  const searchValueChangeHandler = (event) => {
+    setSearchValue(event.target.value);
+    const filteredSearch = courses.filter((course) =>
+      course.name.includes(event.target.value)
+    );
+    setOrderedCourses(filteredSearch);
   };
   return (
     <>
@@ -171,6 +180,8 @@ export default function Category() {
                             type="text"
                             className="courses-top-bar__input"
                             placeholder="جستجوی دوره ..."
+                            value={searchValue}
+                            onChange={searchValueChangeHandler}
                           />
                           <i className="fas fa-search courses-top-bar__search-icon"></i>
                         </form>
