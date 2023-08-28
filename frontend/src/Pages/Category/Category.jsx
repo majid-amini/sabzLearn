@@ -114,7 +114,7 @@ export default function Category() {
                                 titleChangeHandler(event);
                               }}
                             >
-                              مرتب سازی بر اساس دوره رایگان
+                              مرتب سازی دوره رایگان
                             </li>
                             <li
                               className="courses-top-bar__selection-item"
@@ -176,9 +176,14 @@ export default function Category() {
                         </form>
                       </div>
                     </div>
-                    {showCourses.map((course) => (
-                      <CourseBox {...course} />
-                    ))}
+                    {showCourses.length > 0 ? (
+                      showCourses.map((course) => <CourseBox {...course} />)
+                    ) : (
+                      <div className="alert alert-warning ">
+                        هیچ دوره ای برای {statusTitle} وجود ندارد
+                      </div>
+                    )}
+
                     <Pagination
                       items={orderedCourses}
                       itemCount={3}
