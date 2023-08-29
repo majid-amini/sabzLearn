@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import "./Topbar.css";
 import { Link } from "react-router-dom";
 
-export default function Topbar() {
+export default memo(function Topbar() {
   const [allTopbarLinks, setAllTopbarLinks] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:4000/v1/menus/topbar`)
@@ -14,7 +14,7 @@ export default function Topbar() {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, randomCount);
   };
-// console.log(allTopbarLinks);
+  // console.log(allTopbarLinks);
   return (
     <div>
       <div className="top-bar">
@@ -48,4 +48,4 @@ export default function Topbar() {
       </div>
     </div>
   );
-}
+});

@@ -9,12 +9,12 @@ export default function App() {
   const [token, setToken] = useState(null);
   const [userInfos, setUserInfos] = useState({});
 
-  const login = useCallback((userInfos, token) => {
+  const login = (userInfos, token) => {
     setIsLoggedIn(true);
     setUserInfos(userInfos);
     setToken(token);
     localStorage.setItem("user", JSON.stringify({ token }));
-  }, []);
+  };
 
   const logout = useCallback(() => {
     setToken(null);
@@ -36,7 +36,7 @@ export default function App() {
           setUserInfos(userData);
         });
     }
-  }, [login,token]);
+  }, [login, token]);
   return (
     <AuthContext.Provider
       value={{
