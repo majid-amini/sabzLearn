@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import routes from "./routes";
 import { useRoutes } from "react-router-dom";
-import AuthContext from "./contex/authcontex";
+import AuthContext from "./contex/authcontext";
 
 export default function App() {
   const router = useRoutes(routes);

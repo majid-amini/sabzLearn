@@ -13,7 +13,7 @@ import {
   emailValidator,
 } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
-import AuthContext from "../../contex/authcontex";
+import AuthContext from "../../contex/authcontext";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -72,7 +72,6 @@ export default function Login() {
           navigate("/");
         });
         authContext.login({}, result.accessToken);
-        
       })
       .catch((err) => {
         console.log(`err =>`, err);
@@ -86,7 +85,7 @@ export default function Login() {
   };
 
   const onchangeHandler = () => {
-    setIsGoogleRecaptchaVerified(true)
+    setIsGoogleRecaptchaVerified(true);
   };
   return (
     <>
@@ -141,15 +140,15 @@ export default function Login() {
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
             <div className="login-form__password recaptcha__parent">
-            <ReCAPTCHA
-              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-              onChange={onchangeHandler}
-            />
+              <ReCAPTCHA
+                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                onChange={onchangeHandler}
+              />
             </div>
-           
+
             <Button
               className={`login-form__btn ${
-                (formState.isFormValid && isGoogleRecaptchaVerified)
+                formState.isFormValid && isGoogleRecaptchaVerified
                   ? "login-form__btn-success"
                   : "login-form__btn-error"
               }`}

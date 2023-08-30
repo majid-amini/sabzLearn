@@ -1,19 +1,17 @@
 import React, { useContext, useState } from "react";
 
 import "./CommentsTextArea.css";
-import AuthContext from "../../contex/authcontex";
+import AuthContext from "../../contex/authcontext";
 import { Link } from "react-router-dom";
 
-export default function CommentsTextArea({ comments,submitComment }) {
+export default function CommentsTextArea({ comments, submitComment }) {
   const authcontex = useContext(AuthContext);
   const [newCommentBody, setNewCommentBody] = useState("");
 
   const onchangeHandler = (event) => {
     setNewCommentBody(event.target.value);
-    
   };
 
-  
   return (
     <div className="comments">
       <div className="comments__header">
@@ -133,7 +131,11 @@ export default function CommentsTextArea({ comments,submitComment }) {
                 {newCommentBody}
               </textarea>
             </div>
-            <button type="submit" className="comments__respond-btn" onClick={() => submitComment(newCommentBody)}>
+            <button
+              type="submit"
+              className="comments__respond-btn"
+              onClick={() => submitComment(newCommentBody)}
+            >
               ارسال
             </button>
           </div>

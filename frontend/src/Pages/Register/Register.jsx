@@ -13,7 +13,7 @@ import {
   emailValidator,
 } from "../../validators/rules";
 import { useForm } from "../../hooks/useForm";
-import AuthContext from "../../contex/authcontex";
+import AuthContext from "../../contex/authcontext";
 export default function Register() {
   const authContex = useContext(AuthContext);
   console.log(authContex);
@@ -48,7 +48,7 @@ export default function Register() {
       email: formState.inputs.email.value,
       password: formState.inputs.password.value,
       confirmPassword: formState.inputs.password.value,
-      phone: '0911111111',
+      phone: "0911111111",
     };
 
     fetch(`http://localhost:4000/v1/auth/register`, {

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import AuthContext from "../../contex/authcontex";
+import AuthContext from "../../contex/authcontext";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
@@ -41,7 +41,10 @@ export default function Navbar() {
                         <ul className="main-header__dropdown">
                           {menu.submenus.map((submenuItem) => (
                             <li className="main-header__dropdown-item">
-                              <Link to={submenuItem.href} className="main-header__dropdown-link">
+                              <Link
+                                to={submenuItem.href}
+                                className="main-header__dropdown-link"
+                              >
                                 {submenuItem.title}
                               </Link>
                             </li>
