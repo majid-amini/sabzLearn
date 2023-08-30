@@ -6,6 +6,7 @@ import Courses from "./Pages/Courses/Courses";
 import Articles from "./Pages/Articles/Articles";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
+import Contact from "./Pages/contact/contact";
 
 const routes = [
   { path: "/", element: <Index /> },
@@ -16,6 +17,7 @@ const routes = [
   { path: "/articles/:page", element: <Articles /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
+  { path: "/contact", element: <Contact /> },
 ];
 
 export default routes;
