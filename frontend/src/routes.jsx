@@ -6,7 +6,7 @@ import Courses from "./Pages/Courses/Courses";
 import Articles from "./Pages/Articles/Articles";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
-import Contact from "./Pages/Contact/contact";
+import Contact from "./Pages/Contact/Contact";
 
 const routes = [
   { path: "/", element: <Index /> },
