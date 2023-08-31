@@ -13,6 +13,8 @@ import {
 
 import { useForm } from "../../hooks/useForm";
 import Button from "../../Components/Form/Button";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 export default function Contact() {
   const [formState, onInputHandler] = useForm(
     {
@@ -20,7 +22,7 @@ export default function Contact() {
         value: "",
         isValid: false,
       },
-     
+
       email: {
         value: "",
         isValid: false,
@@ -36,7 +38,36 @@ export default function Contact() {
     },
     false
   );
-  const addNewContact = () => {};
+  const navigate = useNavigate();
+  const addNewContact = (event) => {
+    event.preventDefault();
+    const newContactInfo = {
+      name: formState.inputs.name.value,
+      email: formState.inputs.email.value,
+      phone: formState.inputs.phone.value,
+      body: formState.inputs.body.value,
+    };
+    fetch("http://localhost:4000/v1/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newContactInfo),
+    })
+      .then((res) => {
+        res.json();
+        if (res.ok) {
+          swal({
+            title: "پیام شما با موفقیت به مدیر سایت ارسال شد",
+            icon: "success",
+            buttons: "تایید",
+          }).then((value) => {
+            navigate("/");
+          });
+        }
+      })
+      .then((result) => console.log(result));
+  };
   return (
     <>
       <Topbar />
