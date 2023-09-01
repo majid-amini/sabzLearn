@@ -7,7 +7,7 @@ import Articles from "./Pages/Articles/Articles";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Contact from "./Pages/Contact/Contact";
-
+//contact typo
 const routes = [
   { path: "/", element: <Index /> },
   { path: "/course-info/:courseName", element: <CourseInfo /> },
